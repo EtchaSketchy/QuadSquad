@@ -45,6 +45,15 @@ int main()
 				mypad1->Vibrate(0.0f, 0.0f);
 			}
 			
+			cout << endl;
+			if (mypad1->isButtonPressed(BUTTON_X))
+			{
+				cout << "button is pressed" << endl;
+			}
+			else
+			{
+				cout << "button is NOT pressed" << endl;
+			}
 
 			Sleep(100);
 			system("cls");

@@ -1,5 +1,6 @@
 #include "PS4.h"
 #pragma comment(lib,"Xinput.lib");
+XButtonIDs XButtons;
 
 CGamepad::CGamepad()
 {
@@ -150,6 +151,15 @@ void CGamepad::Vibrate(float _leftMotor, float _rightMotor)
 	XInputSetState(m_Index, &vibration);
 }
 
+bool CGamepad::isButtonPressed(int _button)
+{
+	if (m_State.Gamepad.wButtons & XINPUT_Buttons[_button])
+	{
+		return true;
+	}
+	return false;
+}
+
 XINPUT_STATE CGamepad::getState()
 {
 	XINPUT_STATE GamepadState;
@@ -182,4 +192,29 @@ bool CGamepad::isConnected()
 	}
 
 	return false;
+}
+
+XButtonIDs::XButtonIDs()
+{
+	// These values are used to index the XINPUT_Buttons array,
+	// accessing the matching XINPUT button value
+
+	A = 0;
+	B = 1;
+	X = 2;
+	Y = 3;
+
+	DPad_Up = 4;
+	DPad_Down = 5;
+	DPad_Left = 6;
+	DPad_Right = 7;
+
+	L_Shoulder = 8;
+	R_Shoulder = 9;
+
+	L_Thumbstick = 10;
+	R_Thumbstick = 11;
+
+	Start = 12;
+	Back = 13;
 }

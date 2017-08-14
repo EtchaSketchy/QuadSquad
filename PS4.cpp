@@ -98,6 +98,58 @@ float CGamepad::RightStick_y()
 	return(static_cast<float>(value) / 32768.0f);
 }
 
+float CGamepad::LeftTrigger()
+{
+	//Fetch value
+	BYTE Trigger = m_State.Gamepad.bLeftTrigger;
+
+	//If the trigger is not dead zoned
+	if (Trigger > XINPUT_GAMEPAD_TRIGGER_THRESHOLD)
+	{
+		//dividing will give value from 0.0f - 1.0f
+		return Trigger / 255.0f;
+	}
+
+	//If it is dead zoned
+	return 0.0f;
+}
+
+float CGamepad::RightTrigger()
+{
+	//Fetch value
+	BYTE Trigger = m_State.Gamepad.bRightTrigger;
+
+	//If the trigger is not dead zoned
+	if (Trigger > XINPUT_GAMEPAD_TRIGGER_THRESHOLD)
+	{
+		//dividing will give value from 0.0f - 1.0f
+		return Trigger / 255.0f;
+	}
+
+	//If it is dead zoned
+	return 0.0f;
+}
+
+void CGamepad::Vibrate(float _leftMotor, float _rightMotor)
+{
+	//Vibration 
+	XINPUT_VIBRATION vibration;
+
+	//zero out the memory
+	ZeroMemory(&vibration, sizeof(XINPUT_VIBRATION));
+
+	//Calculate vibration values
+	int iLeftMotor = int(_leftMotor * 65535.0f);
+	int iRightMotor = int(_rightMotor * 65535.0f);
+
+	//Set vibration values
+	vibration.wLeftMotorSpeed = iLeftMotor;
+	vibration.wRightMotorSpeed = iRightMotor;
+
+	//Finally, set the vibration
+	XInputSetState(m_Index, &vibration);
+}
+
 XINPUT_STATE CGamepad::getState()
 {
 	XINPUT_STATE GamepadState;

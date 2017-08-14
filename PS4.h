@@ -24,6 +24,13 @@ public:
 	float RightStick_x();
 	float RightStick_y();
 
+	//Triggers
+	float LeftTrigger();
+	float RightTrigger();
+
+	//Vibration
+	void Vibrate(float _leftMotor, float _rightMotor);
+
 	//Fetch data
 	XINPUT_STATE getState();
 	int getIndex();

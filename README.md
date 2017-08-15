@@ -1,2 +1,0 @@
-# QuadSquad
-University Group Project

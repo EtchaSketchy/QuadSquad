@@ -1,63 +1,43 @@
 #include <iostream>
-#include "PS4.h"
+#include "Dependencies\Freeglut\include\GL\glut.h"
 using namespace std;
 
-CGamepad* mypad1;
-
-
-int main()
+//Render loop
+void render()
 {
-	mypad1 = new CGamepad(1);
-	if (mypad1->isConnected())
-	{
-		while (1)
-		{
-			mypad1->update();
-			if (!mypad1->LStick_Dead())
-			{
-				cout << "Left Joystick =" << mypad1->LeftStick_x() << " : " << mypad1->LeftStick_y() << endl;
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-			}
-			else
-			{
-				cout << "Left Joystick = DEAD ZONE"<< endl;
-			}
+	glBegin(GL_TRIANGLES);
+	glVertex3f(-0.5, -0.5, 0.0);
+	glVertex3f(0.5, 0.0, 0.0);
+	glVertex3f(0.0, 0.5, 0.0);
+	glEnd();
 
-			if (!mypad1->Rstick_Dead())
-			{
-				cout << "Right Joystick =" << mypad1->RightStick_x() << " : " << mypad1->RightStick_y() << endl;
-			}
-			else
-			{
-				cout << "Right Joystick = DEAD ZONE" << endl;
-			}
-			cout << endl;
+	glutSwapBuffers();
+}
 
-			cout << "Left Trigger =" << mypad1->LeftTrigger() << endl;
-			cout << "Right Trigger =" << mypad1->RightTrigger() << endl;
+//Game logic loop
+void update()
+{
+	
+}
 
-			if (mypad1->LeftTrigger() > 0.0f || mypad1->RightTrigger() > 0.0f)
-			{
-				mypad1->Vibrate(1.0f, 1.0f);
-			}
-			else
-			{
-				mypad1->Vibrate(0.0f, 0.0f);
-			}
-			
-			cout << endl;
-			if (mypad1->isButtonPressed(BUTTON_X))
-			{
-				cout << "button is pressed" << endl;
-			}
-			else
-			{
-				cout << "button is NOT pressed" << endl;
-			}
+//Entry point for everything
+int main(int argc, char **argv)
+{
+	//init glut and make window
+	glutInit(&argc, argv);
+	glutInitWindowPosition(1, 1);
+	glutInitWindowSize(400, 400);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
+	glutCreateWindow("QuadSquad");
 
-			Sleep(100);
-			system("cls");
-		}
-	}
-	system("pause");
+	//register callbacks
+	glutDisplayFunc(render);
+	glutIdleFunc(update);
+
+	//enter loop
+	glutMainLoop();
+
+	Sleep(5000);
 }

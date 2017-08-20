@@ -69,30 +69,30 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\ViciousDictator\Documents\Visual Studio 2015\Projects\Framework\Framework\Dependencies\Freeglut\include\GL;C:\Users\ViciousDictator\Documents\Visual Studio 2015\Projects\Framework\Framework\Dependencies\Glew\GL;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\ViciousDictator\Documents\Visual Studio 2015\Projects\Framework\Framework\Dependencies\Freeglut;C:\Users\ViciousDictator\Documents\Visual Studio 2015\Projects\Framework\Framework\Dependencies\Glew;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)\Dependencies\Freeglut\include\GL;$(ProjectDir)\Dependencies\Glew\GL;$(ProjectDir)\Dependencies\GLM\glm;$(ProjectDir)\Dependencies\soil;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)\Dependencies\Freeglut;$(ProjectDir)\Dependencies\Glew;$(ProjectDir)\Dependencies\soil;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\Users\ViciousDictator\Documents\Visual Studio 2015\Projects\Framework\Framework\Dependencies\Freeglut\include\GL;C:\Users\ViciousDictator\Documents\Visual Studio 2015\Projects\Framework\Framework\Dependencies\Glew\GL;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\ViciousDictator\Documents\Visual Studio 2015\Projects\Framework\Framework\Dependencies\Freeglut;C:\Users\ViciousDictator\Documents\Visual Studio 2015\Projects\Framework\Framework\Dependencies\Glew;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)\Dependencies\Freeglut\include\GL;$(ProjectDir)\Dependencies\Glew\GL;$(ProjectDir)\Dependencies\GLM\glm;$(ProjectDir)\Dependencies\soil;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)\Dependencies\Freeglut;$(ProjectDir)\Dependencies\Glew;$(ProjectDir)\Dependencies\soil;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\ViciousDictator\Documents\Visual Studio 2015\Projects\Framework\Framework\Dependencies\Freeglut\include\GL;C:\Users\ViciousDictator\Documents\Visual Studio 2015\Projects\Framework\Framework\Dependencies\Glew\GL;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\ViciousDictator\Documents\Visual Studio 2015\Projects\Framework\Framework\Dependencies\Freeglut;C:\Users\ViciousDictator\Documents\Visual Studio 2015\Projects\Framework\Framework\Dependencies\Glew;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)\Dependencies\Freeglut\include\GL;$(ProjectDir)\Dependencies\Glew\GL;$(ProjectDir)\Dependencies\GLM\glm;$(ProjectDir)\Dependencies\soil;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)\Dependencies\Freeglut;$(ProjectDir)\Dependencies\Glew;$(ProjectDir)\Dependencies\soil;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\Users\ViciousDictator\Documents\Visual Studio 2015\Projects\Framework\Framework\Dependencies\Freeglut\include\GL;C:\Users\ViciousDictator\Documents\Visual Studio 2015\Projects\Framework\Framework\Dependencies\Glew\GL;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\ViciousDictator\Documents\Visual Studio 2015\Projects\Framework\Framework\Dependencies\Freeglut;C:\Users\ViciousDictator\Documents\Visual Studio 2015\Projects\Framework\Framework\Dependencies\Glew;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)\Dependencies\Freeglut\include\GL;$(ProjectDir)\Dependencies\Glew\GL;$(ProjectDir)\Dependencies\GLM\glm;$(ProjectDir)\Dependencies\soil;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)\Dependencies\Freeglut;$(ProjectDir)\Dependencies\Glew;$(ProjectDir)\Dependencies\soil;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\ViciousDictator\Documents\Visual Studio 2015\Projects\Framework\Framework\Dependencies\Freeglut\include\GL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Dependencies\Freeglut\include\GL;$(ProjectDir)\Dependencies\Glew\GL;$(ProjectDir)\Dependencies\soil;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>freeglut_staticd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>freeglut_staticd.lib;glew32.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -100,10 +100,10 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\ViciousDictator\Documents\Visual Studio 2015\Projects\Framework\Framework\Dependencies\Freeglut\include\GL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Dependencies\Freeglut\include\GL;$(ProjectDir)\Dependencies\Glew\GL;$(ProjectDir)\Dependencies\soil;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>freeglut_staticd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>freeglut_staticd.lib;glew32.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -113,12 +113,12 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\ViciousDictator\Documents\Visual Studio 2015\Projects\Framework\Framework\Dependencies\Freeglut\include\GL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Dependencies\Freeglut\include\GL;$(ProjectDir)\Dependencies\Glew\GL;$(ProjectDir)\Dependencies\soil;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>freeglut_staticd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>freeglut_staticd.lib;glew32.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -128,16 +128,30 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\ViciousDictator\Documents\Visual Studio 2015\Projects\Framework\Framework\Dependencies\Freeglut\include\GL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Dependencies\Freeglut\include\GL;$(ProjectDir)\Dependencies\Glew\GL;$(ProjectDir)\Dependencies\soil;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>freeglut_staticd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>freeglut_staticd.lib;glew32.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Controls.cpp" />
+    <ClCompile Include="Cube.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PS4.cpp" />
+    <ClCompile Include="ShaderLoader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="Controls.h" />
+    <ClInclude Include="Cube.h" />
+    <ClInclude Include="PS4.h" />
+    <ClInclude Include="ShaderLoader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

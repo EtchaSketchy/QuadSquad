@@ -1,0 +1,8 @@
+﻿  Cube.cpp
+c:\users\david\desktop\the quadsquad\framework\cube.cpp(88): warning C4129: 'T': unrecognized character escape sequence
+SOIL.lib(image_DXT.obj) : warning LNK4099: PDB 'Win32Project1.pdb' was not found with 'SOIL.lib(image_DXT.obj)' or at 'C:\Users\David\Desktop\The QuadSquad\Debug\Win32Project1.pdb'; linking object as if no debug info
+SOIL.lib(image_helper.obj) : warning LNK4099: PDB 'Win32Project1.pdb' was not found with 'SOIL.lib(image_helper.obj)' or at 'C:\Users\David\Desktop\The QuadSquad\Debug\Win32Project1.pdb'; linking object as if no debug info
+SOIL.lib(SOIL.obj) : warning LNK4099: PDB 'Win32Project1.pdb' was not found with 'SOIL.lib(SOIL.obj)' or at 'C:\Users\David\Desktop\The QuadSquad\Debug\Win32Project1.pdb'; linking object as if no debug info
+SOIL.lib(stb_image_aug.obj) : warning LNK4099: PDB 'Win32Project1.pdb' was not found with 'SOIL.lib(stb_image_aug.obj)' or at 'C:\Users\David\Desktop\The QuadSquad\Debug\Win32Project1.pdb'; linking object as if no debug info
+  Framework.vcxproj -> C:\Users\David\Desktop\The QuadSquad\Debug\Framework.exe
+  Framework.vcxproj -> C:\Users\David\Desktop\The QuadSquad\Debug\Framework.pdb (Partial PDB)

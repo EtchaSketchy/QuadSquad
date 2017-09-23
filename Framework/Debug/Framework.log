@@ -1,0 +1,10 @@
+﻿  main.cpp
+c:\users\david\desktop\this is the quadsquad\framework\main.cpp(42): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Cube.cpp
+  Generating Code...
+SOIL.lib(image_DXT.obj) : warning LNK4099: PDB 'Win32Project1.pdb' was not found with 'SOIL.lib(image_DXT.obj)' or at 'C:\Users\David\Desktop\This is the quadsquad\Debug\Win32Project1.pdb'; linking object as if no debug info
+SOIL.lib(image_helper.obj) : warning LNK4099: PDB 'Win32Project1.pdb' was not found with 'SOIL.lib(image_helper.obj)' or at 'C:\Users\David\Desktop\This is the quadsquad\Debug\Win32Project1.pdb'; linking object as if no debug info
+SOIL.lib(SOIL.obj) : warning LNK4099: PDB 'Win32Project1.pdb' was not found with 'SOIL.lib(SOIL.obj)' or at 'C:\Users\David\Desktop\This is the quadsquad\Debug\Win32Project1.pdb'; linking object as if no debug info
+SOIL.lib(stb_image_aug.obj) : warning LNK4099: PDB 'Win32Project1.pdb' was not found with 'SOIL.lib(stb_image_aug.obj)' or at 'C:\Users\David\Desktop\This is the quadsquad\Debug\Win32Project1.pdb'; linking object as if no debug info
+  Framework.vcxproj -> C:\Users\David\Desktop\This is the quadsquad\Debug\Framework.exe
+  Framework.vcxproj -> C:\Users\David\Desktop\This is the quadsquad\Debug\Framework.pdb (Partial PDB)

@@ -26,10 +26,22 @@ void CCamera::init()
 
 void CCamera::update()
 {
+	float aspectRatio = (float)glutGet(GLUT_WINDOW_WIDTH) / (float)glutGet(GLUT_WINDOW_HEIGHT);
+
+	if (glutGet(GLUT_WINDOW_WIDTH) >= glutGet(GLUT_WINDOW_HEIGHT))
+	{
+		projectionMatrix = glm::ortho(-10.0f * aspectRatio, 10.0f * aspectRatio, -10.0f, 10.0f, 0.0f, 100.0f);
+	}
+	else
+	{
+		projectionMatrix = glm::ortho(-10.0f, 10.0f, -10.0f / aspectRatio, 10.0f / aspectRatio, 0.0f, 100.0f);
+	}
+
+
 	viewMatrix = glm::lookAt
 	(
-		m_position,	//Camera is where now?
-		m_position + m_direction,	//Camera looks at what now?
+		glm::vec3(0, 0, 10),	//Camera is where now?
+		glm::vec3(0, 0, 0),	//Camera looks at what now?
 		glm::vec3(0, 1, 0)	//Camera head is what way now?
 	);
 }

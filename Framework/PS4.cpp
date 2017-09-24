@@ -4,12 +4,14 @@ XButtonIDs XButtons;
 
 CGamepad::CGamepad()
 {
+	isReady = false;
 }
 
 CGamepad::CGamepad(int _Index)
 {
 	//Keeps as player 1 or player 2
-	m_Index = m_Index - 1;
+	m_Index = _Index - 1;
+	isReady = false;
 }
 
 CGamepad::~CGamepad()
@@ -181,7 +183,7 @@ bool CGamepad::isConnected()
 		ZeroMemory(&m_State, sizeof(XINPUT_STATE));
 
 		// Get the state of the gamepad
-		DWORD Result = XInputGetState(i, &m_State);
+		DWORD Result = XInputGetState(0, &m_State);
 
 		if (Result == ERROR_SUCCESS)
 		{

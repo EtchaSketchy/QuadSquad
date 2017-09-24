@@ -33,7 +33,6 @@ public:
 	virtual GLuint* GetBAOArray();
 
 
-
 	//movement
 	virtual void setPosition(glm::vec3 _Position);
 	virtual void setScale(glm::vec3 _Scale);

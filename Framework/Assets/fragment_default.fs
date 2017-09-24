@@ -1,11 +1,11 @@
 #version 330 core
 
-in vec2 Textcoord;
 out vec4 fragment;
+in vec2 UVcoordinates;
 
-uniform sampler2D myTextureSampler;
+uniform sampler2D TextureSampler;
 
 void main(){
-	fragment = texture(myTextureSampler,Textcoord).rgba;
-	//fragment = vec3(1.0,0.0,0.0);
+	fragment = texture(TextureSampler,UVcoordinates).rgba;
+	//fragment = vec4(1.0,0.0,0.0,0.0);
 }

@@ -1,4 +1,4 @@
-#ifndef PS4_h
+#ifndef PS4_H
 #define PS4_H
 
 
@@ -99,9 +99,12 @@ public:
 		BUTTON_SHARE
 	};
 
+	bool isReady;
+
 private:
 	XINPUT_STATE m_State;
 	int m_Index;
+	
 };
 
 

@@ -3,6 +3,11 @@
 #include "ShaderLoader.h"
 #include "Cube.h"
 #include "Controls.h"
+#include "Image.h"
+#include "PS4.h"
+#include "Player.h"
+#include "Pistol.h"
+#include "Weapon.h"
 
 
 using namespace std;
@@ -14,20 +19,228 @@ CCamera camera;
 GLuint SHADER_DEFAULT;
 
 //Gamepad
-CControls gamePad;
+std::vector<CGamepad*> gamepads;
 
-//
+//The world
+b2World* world;
+
+//players
+std::vector<CPlayer> Players;
+
+
+
+//Title screen image
+CImage titleScreen;
+CImage indictator;
+bool menu;
+bool characterSelect;
+int option;
+int playerCount;
+bool player1Ready;
+bool player2Ready;
+bool player3Ready;
+bool player4Ready;
+
+bool GamePlay;
 
 //DeltaTime
 float deltaTime;
 auto t2 = std::chrono::high_resolution_clock::now();
 
-//Render loop
+
+
+
+
+//Game play loops-------------------
+
+//Happens at the beginning of the game
+void OnGameplayBegin()
+{
+	cout << "On Game Play Begin executing" << endl;
+	cout << "----------------------------" << endl;
+
+	//Make the world
+	world = new b2World(b2Vec2(0,0));
+
+	//First make the players
+	for (unsigned int i = 0; i < playerCount; i++)
+	{
+		CPlayer temp;
+		temp.init(*world, glm::vec2(0, 0), glm::vec2(1, 1), 2.5f, 1.3f, 0.1f);
+		temp.addGamepad(*gamepads[i]);
+		temp.addSprite("Assets/Textures/Vishuu/Vishu.psd");
+
+		//Give a weapon
+		CWeapon* weapon;
+		weapon = new CPistol();
+		temp.Equip(*weapon);
+
+		Players.push_back(temp);
+	}
+}
+
+void gameplayLoop(float deltaTime)
+{
+	//Start box2D colllisions
+	float32 timeStep = 1.0f / 60.0f;
+	world->Step(timeStep, 6, 2);
+
+	//Update the camera
+	camera.update();
+
+	//Update the players
+	for (unsigned int i = 0; i < Players.size(); i++)
+	{
+		Players[i].update(deltaTime);
+	}
+}
+
+void gamePlayRender()
+{
+	for (unsigned int i = 0; i < Players.size(); i++)
+	{
+		Players[i].render(SHADER_DEFAULT, camera);
+	}
+
+	for (unsigned int j = 0; j < Players[0].bullets.size(); j++)
+	{
+		Players[0].bullets[j].render(SHADER_DEFAULT, camera);
+	}
+
+	for (unsigned int j = 0; j < Players[1].bullets.size(); j++)
+	{
+		Players[1].bullets[j].render(SHADER_DEFAULT, camera);
+	}
+}
+
+//--------------------------------
+
+
+//Menu loops---------------------------
+void menuLoop()
+{
+	//Update the camera
+	camera.update();
+
+	if (menu == true)
+	{
+		gamepads[0]->update();
+		if (gamepads[0]->isButtonPressed(5))
+		{
+			cout << "Down" << endl;
+			option = 0;
+			indictator.SetPosition(glm::vec3(-1.8, 1.3, 5));
+		}
+		else if (gamepads[0]->isButtonPressed(4))
+		{
+			option = 1;
+			cout << "Up" << endl;
+			indictator.SetPosition(glm::vec3(-1.8, 4.0, 5));
+		}
+		else if (gamepads[0]->isButtonPressed(0))
+		{
+			cout << "X" << endl;
+			if (option == 0)
+			{
+				exit(0);
+			}
+			else if (option == 1)
+			{
+				menu = false;
+				characterSelect = true;
+				titleScreen.addSprite("Assets/Textures/Select.psd");
+			}
+		}
+	}
+	else if (characterSelect == true)
+	{
+		int temp;
+		temp = playerCount;
+
+		//Player one has special controls
+		gamepads[0]->update();
+		if (gamepads[0]->isButtonPressed(12) && !gamepads[0]->isReady)
+		{
+			playerCount++;
+			gamepads[0]->isReady = true;
+		}
+		else if (gamepads[0]->isButtonPressed(0) && playerCount > 0)
+		{
+			//Launch us into the game!!
+			GamePlay = true;
+			OnGameplayBegin();
+		}
+
+		//Repeat for other controlls
+		for (unsigned int i = 1; i < gamepads.size(); i++)
+		{
+			gamepads[i]->update();
+			if (gamepads[i]->isButtonPressed(12) && !gamepads[i]->isReady)
+			{
+				playerCount++;
+				gamepads[i]->isReady = true;
+			}
+		}
+
+
+		if (playerCount != temp)
+		{
+			if (playerCount == 0)
+			{
+				titleScreen.addSprite("Assets/Textures/Select.psd");
+			}
+			else if (playerCount == 1)
+			{
+				titleScreen.addSprite("Assets/Textures/Select_1.psd");
+			}
+			else if (playerCount == 2)
+			{
+				titleScreen.addSprite("Assets/Textures/Select_2.psd");
+			}
+			else if (playerCount == 3)
+			{
+				titleScreen.addSprite("Assets/Textures/Select_3.psd");
+			}
+			else if (playerCount == 4)
+			{
+				titleScreen.addSprite("Assets/Textures/Select_4.psd");
+			}
+		}
+	}
+}
+
+void menuRender()
+{
+	if (menu)
+	{
+		titleScreen.render(SHADER_DEFAULT, camera);
+		indictator.render(SHADER_DEFAULT, camera);
+	}
+	else if (characterSelect)
+	{
+		titleScreen.render(SHADER_DEFAULT, camera);
+	}
+}
+//--------------------------------------
+
+
+//Main display call
 void render()
 {
 	//clear all
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 	glClearColor(0.08f, 0.08f, 0.08f, 0.0);
+
+	if (GamePlay)
+	{
+		gamePlayRender();
+	}
+	else
+	{
+		menuRender();
+	}
+	
+
 
 	//Swap out the buffers
 	glutSwapBuffers();
@@ -40,35 +253,20 @@ void update()
 	auto t1 = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<double, std::milli> fp_ms = t1 - t2;
 	deltaTime = fp_ms.count();
-	deltaTime = deltaTime * 0.001f;
+	deltaTime = deltaTime * 0.01f;
 	t2 = t1;
 
-	//update camera and controls
-	//camera.update();
-
-	cout << deltaTime << endl;
-
-	glutPostRedisplay();
-}
-
-void mouseMovement(int xPos, int yPos)
-{
-	//Reset mouse position to centre of screen
-	if (xPos >= (glutGet(GLUT_WINDOW_WIDTH) / 2) + 0.1 || xPos <= (glutGet(GLUT_WINDOW_WIDTH) / 2) - 0.1 || yPos >= (glutGet(GLUT_WINDOW_HEIGHT)/2) + 0.1 || yPos <= (glutGet(GLUT_WINDOW_HEIGHT) / 2) - 0.1)
+	if (GamePlay)
 	{
-		glutWarpPointer(glutGet(GLUT_WINDOW_WIDTH) / 2, glutGet(GLUT_WINDOW_HEIGHT) / 2);
+		gameplayLoop(deltaTime);
+	}
+	else
+	{
+		menuLoop();
 	}
 	
-}
 
-void KeyboardDown(unsigned char key, int x, int y)
-{
-
-}
-
-void KeyboardUp(unsigned char key, int x, int y)
-{
-
+	glutPostRedisplay();
 }
 
 void init()
@@ -80,23 +278,47 @@ void init()
 	//make camera
 	camera.init();
 
+	//make players
+	for (unsigned int i = 1; i < 5; i++)
+	{
+		CGamepad* gamePad;
+		gamePad = new CGamepad(i);
+
+		gamepads.push_back(gamePad);
+	}
+
+	//make the backdrop for the title
+	titleScreen.init();
+	titleScreen.addSprite("Assets/Textures/Title.psd");
+	titleScreen.SetScale(glm::vec3(-13, -10, 1));
+
+	//Indicator for title
+	indictator.init();
+	indictator.addSprite("Assets/Textures/YellowBird.psd");
+	indictator.SetScale(glm::vec3(0.5, 0.5, 0.5));
+	indictator.SetPosition(glm::vec3(-1.8, 1.3, 5));
+	
 	//enable depth test
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
 
-	//enable Back Face Culling
-	glEnable(GL_CULL_FACE);
-
 	//enable anti-aliasing
 	glEnable(GL_MULTISAMPLE);
 
-	//enable stencil
-	glEnable(GL_STENCIL_TEST);
+	menu = true;
+	playerCount = 0;
+	GamePlay = false;
 
-	//hide mouse
-	glutSetCursor(GLUT_CURSOR_NONE);
+	player1Ready = false;
+	player2Ready = false;
+	player3Ready = false;
+	player4Ready = false;
 
 }
+
+
+
+
 
 //Entry point for everything
 int main(int argc, char **argv)
@@ -104,7 +326,7 @@ int main(int argc, char **argv)
 	//init glut and make window
 	glutInit(&argc, argv);
 	glutInitWindowPosition(1200, 1);
-	glutInitWindowSize(800, 800);
+	glutInitWindowSize(1200, 900);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH | GLUT_MULTISAMPLE | GLUT_STENCIL);
 	glutCreateWindow("QuadSquad");
 
@@ -117,9 +339,6 @@ int main(int argc, char **argv)
 	//register callbacks
 	glutDisplayFunc(render);
 	glutIdleFunc(update);
-	glutPassiveMotionFunc(mouseMovement);
-	glutKeyboardFunc(KeyboardDown);
-	glutKeyboardUpFunc(KeyboardUp);
 
 	//enter loop
 	glutMainLoop();

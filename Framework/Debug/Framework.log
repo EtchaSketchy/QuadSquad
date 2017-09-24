@@ -1,10 +1,21 @@
-﻿  main.cpp
-c:\users\david\desktop\this is the quadsquad\framework\main.cpp(42): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+﻿  Weapon.cpp
+  ShaderLoader.cpp
+  PS4.cpp
+g:\vicious\repository\quadsquad\quadsquad\framework\ps4.cpp(2): warning C4081: expected 'newline'; found ';'
+  Player.cpp
+  Pistol.cpp
+  main.cpp
+g:\vicious\repository\quadsquad\quadsquad\framework\main.cpp(66): warning C4018: '<': signed/unsigned mismatch
+g:\vicious\repository\quadsquad\quadsquad\framework\main.cpp(255): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Image.cpp
   Cube.cpp
+  Controls.cpp
+  Camera.cpp
+  Bullet.cpp
   Generating Code...
-SOIL.lib(image_DXT.obj) : warning LNK4099: PDB 'Win32Project1.pdb' was not found with 'SOIL.lib(image_DXT.obj)' or at 'C:\Users\David\Desktop\This is the quadsquad\Debug\Win32Project1.pdb'; linking object as if no debug info
-SOIL.lib(image_helper.obj) : warning LNK4099: PDB 'Win32Project1.pdb' was not found with 'SOIL.lib(image_helper.obj)' or at 'C:\Users\David\Desktop\This is the quadsquad\Debug\Win32Project1.pdb'; linking object as if no debug info
-SOIL.lib(SOIL.obj) : warning LNK4099: PDB 'Win32Project1.pdb' was not found with 'SOIL.lib(SOIL.obj)' or at 'C:\Users\David\Desktop\This is the quadsquad\Debug\Win32Project1.pdb'; linking object as if no debug info
-SOIL.lib(stb_image_aug.obj) : warning LNK4099: PDB 'Win32Project1.pdb' was not found with 'SOIL.lib(stb_image_aug.obj)' or at 'C:\Users\David\Desktop\This is the quadsquad\Debug\Win32Project1.pdb'; linking object as if no debug info
-  Framework.vcxproj -> C:\Users\David\Desktop\This is the quadsquad\Debug\Framework.exe
-  Framework.vcxproj -> C:\Users\David\Desktop\This is the quadsquad\Debug\Framework.pdb (Partial PDB)
+SOIL.lib(image_DXT.obj) : warning LNK4099: PDB 'Win32Project1.pdb' was not found with 'SOIL.lib(image_DXT.obj)' or at 'G:\Vicious\Repository\QuadSquad\QuadSquad\Debug\Win32Project1.pdb'; linking object as if no debug info
+SOIL.lib(image_helper.obj) : warning LNK4099: PDB 'Win32Project1.pdb' was not found with 'SOIL.lib(image_helper.obj)' or at 'G:\Vicious\Repository\QuadSquad\QuadSquad\Debug\Win32Project1.pdb'; linking object as if no debug info
+SOIL.lib(SOIL.obj) : warning LNK4099: PDB 'Win32Project1.pdb' was not found with 'SOIL.lib(SOIL.obj)' or at 'G:\Vicious\Repository\QuadSquad\QuadSquad\Debug\Win32Project1.pdb'; linking object as if no debug info
+SOIL.lib(stb_image_aug.obj) : warning LNK4099: PDB 'Win32Project1.pdb' was not found with 'SOIL.lib(stb_image_aug.obj)' or at 'G:\Vicious\Repository\QuadSquad\QuadSquad\Debug\Win32Project1.pdb'; linking object as if no debug info
+  Framework.vcxproj -> G:\Vicious\Repository\QuadSquad\QuadSquad\Debug\Framework.exe
+  Framework.vcxproj -> G:\Vicious\Repository\QuadSquad\QuadSquad\Debug\Framework.pdb (Partial PDB)

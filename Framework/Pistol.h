@@ -19,6 +19,9 @@
 #include "Weapon.h"
 #include "Bullet.h"
 
+
+
+
 class CPistol : public CWeapon
 {
 public:
@@ -26,9 +29,11 @@ public:
 	~CPistol();
 
 	virtual void fire(std::vector<CBullet>& _bullets, b2World &_world, glm::vec2 _position, glm::vec2 _direction) override;
+	
 
 private:
 	float fireRate;
+	glm::vec2 lastBulletFired;
 };
 
 #endif

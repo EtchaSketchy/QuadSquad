@@ -27,6 +27,8 @@ b2World* world;
 //players
 std::vector<CPlayer> Players;
 
+//bullets
+std::vector<CBullet> bullets;
 
 
 //Title screen image
@@ -65,10 +67,34 @@ void OnGameplayBegin()
 	//First make the players
 	for (unsigned int i = 0; i < playerCount; i++)
 	{
+		//initialise different player sprites here
 		CPlayer temp;
 		temp.init(*world, glm::vec2(0, 0), glm::vec2(1, 1), 2.5f, 1.3f, 0.1f);
 		temp.addGamepad(*gamepads[i]);
-		temp.addSprite("Assets/Textures/Vishuu/Vishu.psd");
+
+		//if i == 0							(ctrl + F "clintwashere" to find order of sprites)
+			//this sprite
+		//elseif i == 1
+			//this sprite
+		//etc
+		if (i == 0)
+		{
+//			temp.addSprite("Assets/Textures/Vishuu/David.png");
+			temp.addSprite("Assets/Textures/Vishuu/Clint.png");
+
+		}
+		else if (i == 1)
+		{
+			temp.addSprite("Assets/Textures/Vishuu/Clint.png");
+		}
+		else if (i == 2)
+		{
+			temp.addSprite("Assets/Textures/Vishuu/Gilberto.png");
+		}
+		else if (i == 3)
+		{
+			temp.addSprite("Assets/Textures/Vishuu/Matt.png");
+		}
 
 		//Give a weapon
 		CWeapon* weapon;
@@ -95,21 +121,20 @@ void gameplayLoop(float deltaTime)
 	}
 }
 
+//This is now for rendering all player stuff
 void gamePlayRender()
 {
 	for (unsigned int i = 0; i < Players.size(); i++)
 	{
+		//Draw bullets for each player here
+		for (unsigned int j = 0; j < Players[i].bullets.size(); j++)
+		{
+			Players[i].bullets[j].render(SHADER_DEFAULT, camera);
+		}
+	}
+	for (unsigned int i = 0; i < Players.size(); i++)
+	{
 		Players[i].render(SHADER_DEFAULT, camera);
-	}
-
-	for (unsigned int j = 0; j < Players[0].bullets.size(); j++)
-	{
-		Players[0].bullets[j].render(SHADER_DEFAULT, camera);
-	}
-
-	for (unsigned int j = 0; j < Players[1].bullets.size(); j++)
-	{
-		Players[1].bullets[j].render(SHADER_DEFAULT, camera);
 	}
 }
 
@@ -182,9 +207,10 @@ void menuLoop()
 			}
 		}
 
-
+		//this adds each sprite in the character selection
 		if (playerCount != temp)
 		{
+			//keep this order when selecting player sprites clintwashere
 			if (playerCount == 0)
 			{
 				titleScreen.addSprite("Assets/Textures/Select.psd");

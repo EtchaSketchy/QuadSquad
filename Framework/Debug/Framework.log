@@ -1,21 +1,5 @@
-﻿  Weapon.cpp
-  ShaderLoader.cpp
-  PS4.cpp
-g:\vicious\repository\quadsquad\quadsquad\framework\ps4.cpp(2): warning C4081: expected 'newline'; found ';'
-  Player.cpp
-  Pistol.cpp
-  main.cpp
-g:\vicious\repository\quadsquad\quadsquad\framework\main.cpp(66): warning C4018: '<': signed/unsigned mismatch
-g:\vicious\repository\quadsquad\quadsquad\framework\main.cpp(255): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  Image.cpp
-  Cube.cpp
-  Controls.cpp
-  Camera.cpp
-  Bullet.cpp
-  Generating Code...
-SOIL.lib(image_DXT.obj) : warning LNK4099: PDB 'Win32Project1.pdb' was not found with 'SOIL.lib(image_DXT.obj)' or at 'G:\Vicious\Repository\QuadSquad\QuadSquad\Debug\Win32Project1.pdb'; linking object as if no debug info
-SOIL.lib(image_helper.obj) : warning LNK4099: PDB 'Win32Project1.pdb' was not found with 'SOIL.lib(image_helper.obj)' or at 'G:\Vicious\Repository\QuadSquad\QuadSquad\Debug\Win32Project1.pdb'; linking object as if no debug info
-SOIL.lib(SOIL.obj) : warning LNK4099: PDB 'Win32Project1.pdb' was not found with 'SOIL.lib(SOIL.obj)' or at 'G:\Vicious\Repository\QuadSquad\QuadSquad\Debug\Win32Project1.pdb'; linking object as if no debug info
-SOIL.lib(stb_image_aug.obj) : warning LNK4099: PDB 'Win32Project1.pdb' was not found with 'SOIL.lib(stb_image_aug.obj)' or at 'G:\Vicious\Repository\QuadSquad\QuadSquad\Debug\Win32Project1.pdb'; linking object as if no debug info
-  Framework.vcxproj -> G:\Vicious\Repository\QuadSquad\QuadSquad\Debug\Framework.exe
-  Framework.vcxproj -> G:\Vicious\Repository\QuadSquad\QuadSquad\Debug\Framework.pdb (Partial PDB)
+﻿  main.cpp
+d:\users\gilberto.mor6945\documents\visual studio 2015\projects\repog\quadsquad\quadsquad\framework\main.cpp(68): warning C4018: '<': signed/unsigned mismatch
+d:\users\gilberto.mor6945\documents\visual studio 2015\projects\repog\quadsquad\quadsquad\framework\main.cpp(281): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Framework.vcxproj -> D:\Users\gilberto.mor6945\Documents\Visual Studio 2015\Projects\RepoG\QuadSquad\QuadSquad\Debug\Framework.exe
+  Framework.vcxproj -> D:\Users\gilberto.mor6945\Documents\Visual Studio 2015\Projects\RepoG\QuadSquad\QuadSquad\Debug\Framework.pdb (Partial PDB)

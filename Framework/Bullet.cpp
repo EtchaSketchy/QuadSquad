@@ -66,6 +66,7 @@ CBullet::CBullet(b2World &_world, glm::vec2 _position, glm::vec2 _direction, glm
 	_direction = glm::normalize(_direction);
 	_direction *= 50.0f;
 	RigidBody->SetLinearVelocity(b2Vec2(_direction.x, _direction.y));
+
 }
 
 CBullet::~CBullet()
@@ -75,7 +76,7 @@ CBullet::~CBullet()
 
 void CBullet::update(float deltaTime)
 {
-
+	//destroy/recycle bullets?
 }
 
 void CBullet::render(GLuint _shader, CCamera camera)

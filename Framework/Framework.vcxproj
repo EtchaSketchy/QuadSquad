@@ -146,6 +146,7 @@
     <ClCompile Include="Pistol.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PS4.cpp" />
+    <ClCompile Include="Rifle.cpp" />
     <ClCompile Include="ShaderLoader.cpp" />
     <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
@@ -158,6 +159,7 @@
     <ClInclude Include="Pistol.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PS4.h" />
+    <ClInclude Include="Rifle.h" />
     <ClInclude Include="ShaderLoader.h" />
     <ClInclude Include="Weapon.h" />
   </ItemGroup>
